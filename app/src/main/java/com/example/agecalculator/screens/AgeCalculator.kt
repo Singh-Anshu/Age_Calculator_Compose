@@ -34,7 +34,9 @@ fun AgeCalculator() {
     ) {
 
         Column(
-            modifier = Modifier.fillMaxSize().background(Color.White),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CustomText(
@@ -49,11 +51,10 @@ fun AgeCalculator() {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Column(
-
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(12.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
 
@@ -79,7 +80,9 @@ fun AgeCalculator() {
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(12.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
 
@@ -102,7 +105,7 @@ fun AgeCalculator() {
                         DatePickerDateOfBirth()
                     }
                 }
-            }
+
         }
 
     }
