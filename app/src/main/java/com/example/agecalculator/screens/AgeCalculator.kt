@@ -1,5 +1,6 @@
 package com.example.agecalculator.screens
 
+import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.agecalculator.components.CustomText
+import com.example.agecalculator.components.DatePickerDateOfBirth
 
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun AgeCalculator() {
 
@@ -49,9 +53,9 @@ fun AgeCalculator() {
 
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.Top
+                    verticalAlignment = Alignment.CenterVertically
 
                 ) {
                     CustomText(
@@ -66,8 +70,38 @@ fun AgeCalculator() {
                     ){
 
                     }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        DatePickerDateOfBirth()
+                    }
                 }
 
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ) {
+
+                    CustomText(
+                        text = "Today",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 18.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        modifier = Modifier.weight(1f),
+                        color = Color.LightGray
+
+                    ){
+
+                    }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        DatePickerDateOfBirth()
+                    }
+                }
             }
         }
 
@@ -75,7 +109,6 @@ fun AgeCalculator() {
 }
 
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewAgeCalculator() {
     AgeCalculator()
