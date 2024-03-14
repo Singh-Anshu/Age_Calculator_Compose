@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,8 +16,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -64,51 +69,112 @@ fun BoxLayout(){
             .fillMaxWidth()
             .height(300.dp)
             .padding(12.dp)
-            .border(width = 1.dp, shape = RoundedCornerShape(15.dp), color = Color.Black)
+            .border(width = 1.dp, shape = RoundedCornerShape(15.dp), color = Color.Black),
     ){
 
-        Row (
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.Top
-        ){
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth().background(color = Color.Cyan)
 
-            CustomText(
-                text = "Age",
-                textStyle = TextStyle(
-                    fontWeight = FontWeight.Normal, fontSize = 44.sp,
-                    textAlign = TextAlign.Start
-                ),
+        ) {
+
+            Row (
+
+               // horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.Top,
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(start = 8.dp),
-                color = Color.DarkGray
-
+                    .fillMaxWidth().
+                    background(color = Color.White)
             ){
 
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .background(color = Color.Red)
+                ){
+
+                    CustomText(
+                        text = "Age",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 44.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .padding(start = 8.dp, top = 20.dp),
+                        color = Color.Black
+
+                    ){
+
+                    }
+
+                }
+
+
+                Divider(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(1.dp)
+                        .padding(vertical = 10.dp),
+                    color = Color.Black,
+                    thickness = 1.dp
+                )
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                       ,
+                    verticalArrangement = Arrangement.SpaceEvenly
+                    ,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ){
+
+                    CustomText(
+                        text = "Next BirthDay",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 20.sp,
+                        ),
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .padding(top = 20.dp),
+                        color = Orange
+
+                    ){
+
+                    }
+
+
+                    Icon(
+                        imageVector = Icons.Filled.AccountCircle,
+                        contentDescription = "BirthDay",
+                        modifier = Modifier
+                            .width(44.dp)
+                            .height(44.dp),
+                        tint = Orange
+                    )
+
+                    CustomText(
+                        text = "Friday",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 16.sp,
+                        ),
+                        modifier = Modifier
+                            .wrapContentWidth(),
+                        color = Color.LightGray
+
+                    ){
+
+                    }
+
+
+                }
+
             }
-
-            Divider(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(vertical = 0.dp),
-                color = Color.DarkGray,
-                thickness = 2.dp
-            )
-
-            CustomText(
-                text = "Next BirthDay",
-                textStyle = TextStyle(
-                    fontWeight = FontWeight.Normal, fontSize = 24.sp,
-                ),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                color = Color.DarkGray
-
-            ){
-
-            }
-
         }
+
+
 
     }
 }
