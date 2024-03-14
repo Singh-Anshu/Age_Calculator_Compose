@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.agecalculator.components.BoxLayout
 import com.example.agecalculator.components.CustomText
 import com.example.agecalculator.components.DatePickerDateOfBirth
 
@@ -39,6 +40,7 @@ fun AgeCalculator() {
                 .background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Header Text
             CustomText(
                 text = "Age",
                 textStyle = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp, textAlign = TextAlign.Center),
@@ -51,6 +53,7 @@ fun AgeCalculator() {
 
             Spacer(modifier = Modifier.height(10.dp))
 
+            // Date Of Birth Component
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -79,6 +82,7 @@ fun AgeCalculator() {
 
                 Spacer(modifier = Modifier.height(10.dp))
 
+            // Today Date
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -106,6 +110,8 @@ fun AgeCalculator() {
                     }
                 }
 
+
+            BoxLayout()
         }
 
     }

@@ -1,44 +1,41 @@
 package com.example.agecalculator.components
 
 import android.app.DatePickerDialog
-import android.graphics.drawable.PaintDrawable
 import android.icu.util.Calendar
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.agecalculator.R
 import com.example.agecalculator.ui.theme.Orange
-import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 
@@ -58,6 +55,62 @@ fun CustomText(
         style = textStyle,
     )
 
+}
+
+@Composable
+fun BoxLayout(){
+    Box (
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+            .padding(12.dp)
+            .border(width = 1.dp, shape = RoundedCornerShape(15.dp), color = Color.Black)
+    ){
+
+        Row (
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.Top
+        ){
+
+            CustomText(
+                text = "Age",
+                textStyle = TextStyle(
+                    fontWeight = FontWeight.Normal, fontSize = 44.sp,
+                    textAlign = TextAlign.Start
+                ),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 8.dp),
+                color = Color.DarkGray
+
+            ){
+
+            }
+
+            Divider(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(vertical = 0.dp),
+                color = Color.DarkGray,
+                thickness = 2.dp
+            )
+
+            CustomText(
+                text = "Next BirthDay",
+                textStyle = TextStyle(
+                    fontWeight = FontWeight.Normal, fontSize = 24.sp,
+                ),
+                modifier = Modifier
+                    .fillMaxWidth(),
+                color = Color.DarkGray
+
+            ){
+
+            }
+
+        }
+
+    }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
