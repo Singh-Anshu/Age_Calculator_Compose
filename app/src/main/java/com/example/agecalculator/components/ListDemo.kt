@@ -1,5 +1,6 @@
 package com.example.agecalculator.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,11 +19,16 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.agecalculator.R
+import kotlin.time.Duration
+import kotlin.time.measureTimedValue
 
 @Composable
 fun ListDemo() {
 
-    val value = generatedNumber()
+    val (value: Any, time: Duration) = measureTimedValue {
+        generatedNumber()
+    }
+    Log.d("timeTaken:" ," The function take time is: $time for result is : $value")
 
     LazyColumn(
         modifier = Modifier
