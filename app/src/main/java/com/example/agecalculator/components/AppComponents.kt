@@ -12,27 +12,36 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -63,71 +72,156 @@ fun CustomText(
 }
 
 @Composable
+fun CustomDivider(
+    modifier: Modifier
+) {
+    Divider(
+        modifier = modifier,
+        color = colorResource(id = R.color.light_gray),
+        thickness = 1.dp
+    )
+}
+
+@Composable
 fun BoxLayout(){
     Box (
         modifier = Modifier
             .fillMaxWidth()
             .height(300.dp)
             .padding(12.dp)
-            .border(width = 1.dp, shape = RoundedCornerShape(15.dp), color = Color.Black),
+            .border(
+                width = 1.dp,
+                shape = RoundedCornerShape(16.dp),
+                color = colorResource(id = R.color.light_gray)
+            ),
     ){
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth().background(color = Color.Cyan)
-
-        ) {
 
             Row (
 
                // horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.Top,
                 modifier = Modifier
-                    .fillMaxWidth().
-                    background(color = Color.White)
+                    .fillMaxWidth()
+                    .background(color = Color.White)
             ){
 
                 Column(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxHeight()
-                        .background(color = Color.Red)
                 ){
 
                     CustomText(
                         text = "Age",
                         textStyle = TextStyle(
-                            fontWeight = FontWeight.Normal, fontSize = 44.sp,
+                            fontWeight = FontWeight.Normal, fontSize = 38.sp,
                             textAlign = TextAlign.Start
                         ),
                         modifier = Modifier
                             .wrapContentWidth()
-                            .padding(start = 8.dp, top = 20.dp),
+                            .padding(start = 10.dp, top = 20.dp),
                         color = Color.Black
 
                     ){
 
                     }
 
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+
+                        CustomText(
+                            text = "13",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 56.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth()
+                                .padding(start = 10.dp),
+                            color = colorResource(id = R.color.orange)
+
+                        ) {
+
+                        }
+
+                        Spacer(modifier = Modifier.width(16.dp))
+
+                        CustomText(
+                            text = "years",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 20.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth()
+                                .padding(top = 16.dp),
+                            color = Color.Black
+
+                        ) {
+
+                        }
+
+                    }
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+                    ) {
+
+                        CustomText(
+                            text = "6 Months",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 16.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth(),
+                            color = Color.LightGray
+
+                        ) {
+
+                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        CustomDivider(
+                            modifier = Modifier
+                                .height(15.dp)
+                                .width(1.dp)
+                                .padding(vertical = 0.dp)
+                        )
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        CustomText(
+                            text = "28 Day",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 16.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth(),
+                            color = Color.LightGray
+
+                        ) {
+
+                        }
+
+                    }
+
                 }
 
-
-                Divider(
+                CustomDivider(
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(1.dp)
                         .padding(vertical = 10.dp),
-                    color = Color.Black,
-                    thickness = 1.dp
                 )
 
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .fillMaxHeight()
-                       ,
-                    verticalArrangement = Arrangement.SpaceEvenly
-                    ,
+                        .fillMaxHeight(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
 
@@ -139,21 +233,34 @@ fun BoxLayout(){
                         modifier = Modifier
                             .wrapContentWidth()
                             .padding(top = 20.dp),
-                        color = Orange
+                        color = colorResource(id = R.color.orange)
 
                     ){
 
                     }
 
-
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "BirthDay",
+                    Surface(
                         modifier = Modifier
-                            .width(44.dp)
-                            .height(44.dp),
-                        tint = Orange
-                    )
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(color = colorResource(id = R.color.orange)),
+                        color = colorResource(id = R.color.orange)
+
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.cake),
+                                contentDescription = "BirthDay",
+                                modifier = Modifier
+                                    .size(24.dp),
+                                tint = colorResource(id = R.color.white),
+                            )
+
+                        }
+                    }
 
                     CustomText(
                         text = "Friday",
@@ -168,12 +275,54 @@ fun BoxLayout(){
 
                     }
 
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+
+                        CustomText(
+                            text = "5 Months",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 16.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth(),
+                            color = Color.LightGray
+
+                        ) {
+
+                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        CustomDivider(
+                            modifier = Modifier
+                                .height(15.dp)
+                                .width(1.dp)
+                                .padding(vertical = 0.dp)
+                        )
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        CustomText(
+                            text = "1 Day",
+                            textStyle = TextStyle(
+                                fontWeight = FontWeight.Normal, fontSize = 16.sp,
+                            ),
+                            modifier = Modifier
+                                .wrapContentWidth(),
+                            color = Color.LightGray
+
+                        ) {
+
+                        }
+
+                    }
+
 
                 }
 
             }
-        }
-
 
 
     }
@@ -212,7 +361,7 @@ fun DatePickerDateOfBirth() {
                     ).show()
                 },
                 fontWeight = FontWeight.Bold,
-                color = Orange,
+                color = colorResource(id = R.color.orange),
                 fontSize = 18.sp,
             )
 
