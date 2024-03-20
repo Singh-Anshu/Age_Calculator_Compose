@@ -106,6 +106,7 @@ fun BoxLayout(){
                     .background(color = Color.White)
             ){
 
+                // Section 1
                 Column(
                     modifier = Modifier
                         .weight(1f)
@@ -211,6 +212,7 @@ fun BoxLayout(){
 
                 }
 
+                // Divider
                 CustomDivider(
                     modifier = Modifier
                         .fillMaxHeight()
@@ -218,6 +220,7 @@ fun BoxLayout(){
                         .padding(vertical = 10.dp),
                 )
 
+                // Section 2
                 Column(
                     modifier = Modifier
                         .weight(1f)
@@ -238,6 +241,8 @@ fun BoxLayout(){
                     ){
 
                     }
+
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     Surface(
                         modifier = Modifier
@@ -262,6 +267,8 @@ fun BoxLayout(){
                         }
                     }
 
+                    Spacer(modifier = Modifier.height(10.dp))
+
                     CustomText(
                         text = "Friday",
                         textStyle = TextStyle(
@@ -274,6 +281,8 @@ fun BoxLayout(){
                     ){
 
                     }
+
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
