@@ -57,7 +57,7 @@ fun AgeCalculator() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(12.dp),
+                    .padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 30.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
 
@@ -69,7 +69,7 @@ fun AgeCalculator() {
                             textAlign = TextAlign.Start
                         ),
                         modifier = Modifier.weight(1f),
-                        color = Color.LightGray
+                        color = Color.Black
 
                     ){
 
@@ -99,7 +99,7 @@ fun AgeCalculator() {
                             textAlign = TextAlign.Start
                         ),
                         modifier = Modifier.weight(1f),
-                        color = Color.LightGray
+                        color = Color.Black
 
                     ){
 
