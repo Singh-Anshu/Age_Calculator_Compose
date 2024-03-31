@@ -12,13 +12,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
@@ -36,105 +40,114 @@ import com.example.agecalculator.components.BoxLayout
 import com.example.agecalculator.components.CustomText
 import com.example.agecalculator.components.DatePickerDateOfBirth
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun AgeCalculator() {
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = Color.White
-    ) {
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            // Header Text
-            CustomText(
-                text = "Age",
-                textStyle = TextStyle(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp,
-                    textAlign = TextAlign.Center
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                color = Color.Black,
-            ) {
-
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Date Of Birth Component
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 30.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-
-            ) {
-                CustomText(
-                    text = "Date of Birth",
-                    textStyle = TextStyle(
-                        fontWeight = FontWeight.Normal, fontSize = 20.sp,
-                        textAlign = TextAlign.Start
-                    ),
-                    modifier = Modifier.weight(1f),
-                    color = Color.Black
-
-                ) {
-
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    DatePickerDateOfBirth()
-                }
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Today Date
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-
-            ) {
-
-                CustomText(
-                    text = "Today",
-                    textStyle = TextStyle(
-                        fontWeight = FontWeight.Normal, fontSize = 18.sp,
-                        textAlign = TextAlign.Start
-                    ),
-                    modifier = Modifier.weight(1f),
-                    color = Color.Black
-
-                ) {
-
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    DatePickerDateOfBirth()
-                }
-            }
-
-
-            BoxLayout()
+    Scaffold(
+        topBar = {
+            TopAppBarDemo("App Bar Demo")
         }
+    ) { paddingValues ->
 
+        Surface(
+            modifier = Modifier.fillMaxSize()
+                .padding(paddingValues),
+            color = Color.White
+        ) {
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.White),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Header Text
+                CustomText(
+                    text = "Age",
+                    textStyle = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp,
+                        textAlign = TextAlign.Center
+                    ),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color.Black,
+                ) {
+
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                // Date Of Birth Component
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 30.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ) {
+                    CustomText(
+                        text = "Date of Birth",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 20.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        modifier = Modifier.weight(1f),
+                        color = Color.Black
+
+                    ) {
+
+                    }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        DatePickerDateOfBirth()
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                // Today Date
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+
+                ) {
+
+                    CustomText(
+                        text = "Today",
+                        textStyle = TextStyle(
+                            fontWeight = FontWeight.Normal, fontSize = 18.sp,
+                            textAlign = TextAlign.Start
+                        ),
+                        modifier = Modifier.weight(1f),
+                        color = Color.Black
+
+                    ) {
+
+                    }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        DatePickerDateOfBirth()
+                    }
+                }
+
+
+                BoxLayout()
+            }
+
+        }
     }
+
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBarDemo() {
+fun TopAppBarDemo(toolbarTitle: String) {
 
-    Scaffold(
+    /*Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
 
@@ -151,7 +164,7 @@ fun TopAppBarDemo() {
                     )
                 },
                 navigationIcon = {
-                IconButton(onClick = { /* do something */ }) {
+                IconButton(onClick = { *//* do something *//* }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Localized description"
@@ -159,10 +172,33 @@ fun TopAppBarDemo() {
                 }
             },
         },
+    )*/
+
+    TopAppBar(
+        title = {
+            Text(toolbarTitle,
+                textAlign = TextAlign.Center)
+        },
+        navigationIcon = {
+            Icon(
+                imageVector = Icons.Filled.Menu,
+                contentDescription = "Menu",
+                tint = Color.Black
+            )
+        },
+
+        actions = {
+            Icon(
+                modifier = Modifier.padding(end = 8.dp),
+                imageVector = Icons.Filled.ExitToApp,
+                contentDescription = "LogOut"
+            )
+        }
+
     )
 }
 
-
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewAgeCalculator() {
     AgeCalculator()
